@@ -1,0 +1,44 @@
+.tabs {
+  display: flex;
+  gap: var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow-x: auto; /* Allow horizontal scroll on mobile if needed */
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab {
+  padding: var(--space-3) var(--space-4);
+  background: transparent;
+  border: none;
+  /* Bottom border is handled by ::after or directly, but we want it to overlay the container border */
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px; /* Overlap container border */
+
+  color: var(--text-secondary);
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+  font-size: var(--text-base);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-colors);
+}
+
+.tab:hover:not(:disabled) {
+  color: var(--text-primary);
+}
+
+.active {
+  color: var(--text-accent);
+  font-weight: var(--weight-semibold);
+  border-bottom-color: var(--color-primary);
+}
+
+.tab:focus-visible {
+  outline: 2px solid var(--state-focus-ring);
+  outline-offset: -2px;
+  border-radius: var(--radius-sm);
+}

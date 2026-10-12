@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "csstools.postcss",
+    "dsznajder.es7-react-js-snippets",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "stylelint.vscode-stylelint",
+    "ms-playwright.playwright",
+    "vitest.explorer",
+    "pkief.material-icon-theme",
+    "beardedbear.beardedtheme",
+    "yzhang.markdown-all-in-one",
+    "bierner.markdown-mermaid"
+  ]
+}

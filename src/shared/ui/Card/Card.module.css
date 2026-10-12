@@ -1,0 +1,40 @@
+.card {
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  transition: var(--transition-all);
+  /* Default border to avoid layout shift on hover or variant change if border width matches */
+  border: 1px solid transparent;
+}
+
+/* === Variants === */
+.default {
+  background: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-md);
+}
+
+.highlighted {
+  background: var(--bg-card-highlight);
+  border-color: var(--border-primary);
+  box-shadow: var(--glow-primary);
+}
+
+.interactive {
+  background: var(--bg-surface-2);
+  border-color: var(--border-subtle);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.interactive:hover {
+  border-color: var(--border-primary);
+  box-shadow: var(--glow-primary);
+  transform: translateY(-2px);
+}

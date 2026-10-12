@@ -82,3 +82,6 @@ Thumbs.db
 
 # planning
 planning/
+
+# dataset downloaded at build time
+public/dataset.json

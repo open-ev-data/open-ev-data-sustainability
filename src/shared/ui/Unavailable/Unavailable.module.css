@@ -1,0 +1,8 @@
+.unavailable {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  font-style: italic;
+  color: var(--text-tertiary);
+}

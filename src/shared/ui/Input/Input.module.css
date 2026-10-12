@@ -1,0 +1,81 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  height: 44px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg-input);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  transition: var(--transition-colors), var(--transition-shadow);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.input:focus {
+  border-color: var(--border-primary);
+  box-shadow: 0 0 0 1px var(--border-primary);
+}
+
+.input:disabled {
+  opacity: var(--state-disabled-opacity);
+  cursor: not-allowed;
+}
+
+/* === Variants/Options === */
+.hasLeadingIcon {
+  padding-left: 40px; /* Space for icon */
+}
+
+.hasTrailingIcon {
+  padding-right: 40px; /* Space for icon */
+}
+
+/* Rounder border for search bars */
+.roundedFull {
+  border-radius: var(--radius-2xl);
+}
+
+/* === Adornments === */
+.leadingIcon,
+.trailingIcon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  pointer-events: none;
+  width: 40px;
+  height: 100%;
+}
+
+.leadingIcon {
+  left: 0;
+}
+
+.trailingIcon {
+  right: 0;
+}
+
+/* If the icon is interactive (e.g. clear button), it should have pointer-events: auto */
+/* We can handle this by letting the consumer pass a button as the icon if needed,
+   but simplistic icons are usually display-only. For now assuming display-only or
+   wrapped interactions.
+   Actually, if the user passes a clickable element, we might need to allow pointer events.
+   Let's check if we can make it pointer-events: auto if it's a button.
+   CSS can't strictly distinguish. But for now, text inputs usually have static icons
+   except for 'clear' or 'search action'.
+*/

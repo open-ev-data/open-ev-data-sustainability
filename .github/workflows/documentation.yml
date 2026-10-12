@@ -1,0 +1,66 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "README.md"
+      - "CHANGELOG.md"
+  workflow_run:
+    workflows: ["Release"]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sync-documentation:
+    name: Sync Documentation to Website
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect documentation changes
+        id: changes
+        run: |
+          # The release commit carries [skip ci], so a push trigger never sees the new
+          # CHANGELOG.md. After a Release run, sync only if the changelog actually changed.
+          if [ "${{ github.event_name }}" = "workflow_run" ]; then
+            BASE="${{ github.event.workflow_run.head_sha }}"
+            if git diff --quiet "$BASE" HEAD -- CHANGELOG.md; then
+              echo "No new release since $BASE; skipping sync"
+              echo "sync=false" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          fi
+          echo "sync=true" >> "$GITHUB_OUTPUT"
+
+      - name: Generate GitHub App token
+        if: steps.changes.outputs.sync == 'true'
+        id: generate_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+      - name: Trigger Website Documentation Sync
+        if: steps.changes.outputs.sync == 'true'
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ steps.generate_token.outputs.token }}
+          repository: open-ev-data/open-ev-data.github.io
+          event-type: sync-sustainability-docs
+          client-payload: |
+            {
+              "source": "sustainability",
+              "sha": "${{ github.sha }}",
+              "ref": "${{ github.ref }}"
+            }

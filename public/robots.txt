@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://open-ev-data.github.io/open-ev-data-sustainability/sitemap.xml

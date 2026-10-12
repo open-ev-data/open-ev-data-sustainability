@@ -1,0 +1,8 @@
+:root {
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1280px;
+  --bp-2xl: 1440px;
+}
+/* Note: Use raw pixel values in @media queries as variables are not supported there */

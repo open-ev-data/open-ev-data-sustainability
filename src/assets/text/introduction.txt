@@ -1,0 +1,13 @@
+====================================================
+I see you are interested in the OpenEV Data project.
+
+This project is an open source initiative that
+aims to collect, process, and provide data
+about electric vehicles.
+
+Visit https://github.com/open-ev-data
+for more information and contribute to the project!
+
+----------------------------------------------------
+Developed by: jsrwell (https://github.com/jsrwell)
+====================================================

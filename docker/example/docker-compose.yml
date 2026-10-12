@@ -1,0 +1,6 @@
+services:
+  sustainability:
+    image: ghcr.io/open-ev-data/open-ev-data-sustainability:latest
+    ports:
+      - "8080:80"
+    restart: always
