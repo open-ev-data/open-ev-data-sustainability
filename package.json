@@ -1,7 +1,7 @@
 {
   "name": "open-ev-data-sustainability",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "description": "Energy consumption, charging and cost insights for electric vehicles, built on the OpenEV Data dataset.",
   "repository": {
